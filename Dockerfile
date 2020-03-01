@@ -29,9 +29,9 @@ RUN gpasswd -a admin sudo
 # Use non standard port for ssh(22) to prevent atack.
 # Prohibit password authentication.
 RUN sed -i.bak \
-  -e "s/Port 22/Port 2201/" \
   -e "s/^\s*PasswordAuthentication\(.*\)$/# PasswordAuthentication\1/" \
   /etc/ssh/sshd_config
+
 RUN echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
 
 RUN mkdir /home/admin/.ssh
